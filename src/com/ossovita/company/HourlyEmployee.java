@@ -12,7 +12,7 @@ public class HourlyEmployee extends Employee {
 
     public HourlyEmployee(String name, LocalDate hireDate, double monthlyHours, double hourlyWage){
         super(name,hireDate);
-        disallowZerosAndNegatives(hourlyWage,monthlyHours); //verilen değerler sıfırdan küçük veya eşitse exception fırlat
+        Utils.disallowZerosAndNegatives(hourlyWage,monthlyHours); //verilen değerler sıfırdan küçük veya eşitse exception fırlat
         this.monthlyHours=monthlyHours;
         this.hourlyWage=hourlyWage;
 
@@ -39,9 +39,4 @@ public class HourlyEmployee extends Employee {
 
 
 
-    public void disallowZerosAndNegatives(double...args){
-        for(double arg : args)
-            if(arg<=0)
-                throw new IllegalArgumentException("Zero or negative argument");
-    }
 }

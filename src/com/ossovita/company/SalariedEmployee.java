@@ -8,7 +8,7 @@ public class SalariedEmployee  extends Employee{
 
     public SalariedEmployee(String name, LocalDate hireDate, double annualSalary){
         super(name,hireDate); //Employee'yi extend ettiğimiz için onun constructor'ını super() ile çağırmalıyız
-        disallowZeroOrNegatives(annualSalary);
+        Utils.disallowZerosAndNegatives(annualSalary);
         this.annualSalary = annualSalary;
     }
 
@@ -22,14 +22,11 @@ public class SalariedEmployee  extends Employee{
 
 
 
+
     /*
     public String toString(){
         return super.toString()+" "+annualSalary;
     }*/
 
-    public void disallowZeroOrNegatives(double...args){
-        for(double arg : args)
-            if(arg<=0)
-                throw new IllegalArgumentException("Zero or Negative Argument");
-    }
+
 }

@@ -2,7 +2,7 @@ package com.ossovita.company;
 
 import java.time.LocalDate;
 
-public abstract class Employee {
+public abstract class Employee implements Comparable<Employee> {
     private String name;
     private LocalDate hireDate;
 
@@ -11,9 +11,14 @@ public abstract class Employee {
     }
 
     public Employee(String name, LocalDate hireDate){
-        disAllowNullArgs(name,hireDate); //girilen parametrelerin boş olup olmadığını kontrol eder
+        Utils.disAllowNullArgs(name,hireDate); //girilen parametrelerin boş olup olmadığını kontrol eder
         this.name=name;
         this.hireDate=hireDate;
+    }
+
+    @Override
+    public int compareTo(Employee other){
+        return this.hireDate.compareTo(other.hireDate);
     }
 
     public String getName(){
@@ -32,11 +37,6 @@ public abstract class Employee {
     }
 
 
-    public void disAllowNullArgs(Object... args){
-        for(Object arg : args)
-            if(args==null)
-                throw new IllegalArgumentException("Null Arguments");
-    }
 
 
 }
